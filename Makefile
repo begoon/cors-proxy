@@ -1,6 +1,6 @@
 .PHONY: shell
 
-APP=salt-api-proxy
+APP=cors-filter
 BINDING=127.0.0.1:5000
 
 all:
