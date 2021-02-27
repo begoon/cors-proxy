@@ -96,9 +96,7 @@ def proxy(*args, **kwargs):
         print_headers(headers)
         return Response(status=200, headers=headers)
 
-    target_host = request.headers['Target-host']
-
-    redirect_url = request.url.replace(request.host_url, f'{target_host}/')
+    redirect_url = kwargs['path']
     redirect_headers = {
         key: value
         for (key, value) in request.headers
