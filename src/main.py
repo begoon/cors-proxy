@@ -136,7 +136,7 @@ def proxy(*args, **kwargs):
 
     print(f'RESPONSE ({processed_requests}): {response.status_code}')
     print_headers(headers)
-    content = response.content.decode()
+    content = response.content
     if content:
         print(f'{content}\n')
 
