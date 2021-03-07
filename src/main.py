@@ -118,6 +118,10 @@ def proxy(*args, **kwargs):
         allow_redirects=False,
     )
 
+    print(f'ORIGINAL RESPONSE ({processed_requests}): {response.status_code}')
+    print_headers(response.headers)
+    print()
+
     excluded_headers = [
         'content-encoding',
         'content-length',
@@ -130,7 +134,7 @@ def proxy(*args, **kwargs):
         if name.lower() not in excluded_headers
     ]
 
-    if bool([h for h, _ in headers if h == 'Access-Control-Allow-Origin']):
+    if not bool([h for h, _ in headers if h == 'Access-Control-Allow-Origin']):
         headers.append(('Access-Control-Allow-Origin', '*'))
 
     print(f'RESPONSE ({processed_requests}): {response.status_code}')
