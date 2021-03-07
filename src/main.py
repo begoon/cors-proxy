@@ -130,9 +130,8 @@ def proxy(*args, **kwargs):
         if name.lower() not in excluded_headers
     ]
 
-    headers.append(
-        ('Access-Control-Allow-Origin', '*'),
-    )
+    if bool([h for h, _ in headers if h == 'Access-Control-Allow-Origin']):
+        headers.append(('Access-Control-Allow-Origin', '*'))
 
     print(f'RESPONSE ({processed_requests}): {response.status_code}')
     print_headers(headers)
